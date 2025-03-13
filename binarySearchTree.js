@@ -1,10 +1,10 @@
 import { mergeSort } from "./sort.js";
 
 class Node {
-    constructor(data, left, right) {
+    constructor(data) {
         this.data = data;
-        this.left = left;
-        this.right = right;
+        this.left = null;
+        this.right = null;
     }
 }
 
@@ -41,6 +41,13 @@ export class Tree {
     sortedArrayToBST(array, start, end) {
         if (start > end) return null;
 
-        return array;
+        const mid = start + Math.floor((end - start) / 2);
+
+        let root = new Node(array[mid]);
+
+        root.left = this.sortedArrayToBST(array, start, mid-1);
+        root.right = this.sortedArrayToBST(array, mid+1, end);
+
+        return root;
     }
 }
