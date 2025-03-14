@@ -40,6 +40,18 @@ prettyPrint(test2.root);
 
 test2.deleteItem(8);
 
+console.log(test2.find(5));
+
 prettyPrint(test2.root);
 
-console.log(test2.find(5));
+function logNode(node) {
+    console.log(node.data);
+}
+
+test2.levelOrder(logNode, test2.root);
+console.log("------");
+test2.preorderRec(logNode, test2.root);
+console.log("------");
+test2.inorderRec(logNode, test2.root);
+console.log("------");
+test2.postorderRec(logNode, test2.root);
