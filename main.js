@@ -20,3 +20,26 @@ const test2 = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(test.root);
 
 prettyPrint(test2.root);
+
+test2.insert(6);
+test2.insert(21);
+test2.insert(2);
+test2.insert(33);
+
+prettyPrint(test2.root);
+
+test2.deleteItem(2);
+test2.deleteItem(33);
+test2.deleteItem(7);
+
+prettyPrint(test2.root);
+
+test2.deleteItem(67);
+
+prettyPrint(test2.root);
+
+test2.deleteItem(8);
+
+prettyPrint(test2.root);
+
+console.log(test2.find(5));
