@@ -13,66 +13,88 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-const test = new Tree([2,1,3,4,2]);
+const randomNumbers = () => {
+    const rand = Math.floor(Math.random() * 10);
+    const numArray = [];
 
-const test2 = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    for (let i = 0; i < rand; i++) {
+        numArray.push(Math.floor(Math.random() * 100));
+    }
 
-prettyPrint(test.root);
-
-prettyPrint(test2.root);
-
-test2.insert(6);
-test2.insert(21);
-test2.insert(2);
-test2.insert(33);
-
-prettyPrint(test2.root);
-
-test2.deleteItem(2);
-test2.deleteItem(33);
-test2.deleteItem(7);
-
-prettyPrint(test2.root);
-
-test2.deleteItem(67);
-
-prettyPrint(test2.root);
-
-test2.deleteItem(8);
-
-console.log(test2.find(5));
-
-prettyPrint(test2.root);
-
-function logNode(node) {
-    console.log(node.data);
+    return numArray;
 }
 
-test2.levelOrder(logNode, test2.root);
-console.log("------");
-test2.preorderRec(logNode, test2.root);
-console.log("------");
-test2.inorderRec(logNode, test2.root);
-console.log("------");
-test2.postorderRec(logNode, test2.root);
-console.log("------");
-const heightNode = test2.find(4);
-console.log(test2.height(heightNode));
-console.log("------");
-console.log(test2.depth(test2.root));
-console.log("------");
-console.log("is test2 balanced? " + test2.isBalanced());
+const bstDriver = () => {
+    const array = randomNumbers();
 
-test2.insert(20);
-test2.insert(19);
-test2.insert(18);
-test2.insert(17);
-prettyPrint(test2.root);
-console.log("is test2 balanced? " + test2.isBalanced());
-console.log("------");
-test2.rebalance();
-prettyPrint(test2.root);
-console.log("is test2 balanced? " + test2.isBalanced());
-test.rebalance();
-prettyPrint(test.root);
-console.log("is test balanced? " + test.isBalanced());
+    const tree = new Tree(array);
+
+    prettyPrint(tree.root);
+    console.log("Is the tree balanced? " + tree.isBalanced());
+    console.log("");
+
+    console.log("Elements in level order:");
+    tree.levelOrder((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    console.log("Elements in preorder:");
+    tree.preorderRec((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    console.log("Elements in postorder:");
+    tree.postorderRec((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    console.log("Elements in inorder:");
+    tree.inorderRec((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    tree.insert(101);
+    tree.insert(333);
+    tree.insert(400);
+    tree.insert(200);
+    tree.insert(150);
+
+    prettyPrint(tree.root);
+    console.log("Is the tree balanced? " + tree.isBalanced());
+    console.log("");
+
+    tree.rebalance();
+    prettyPrint(tree.root);
+    console.log("Is the tree balanced? " + tree.isBalanced());
+    console.log("");
+
+    console.log("Elements in level order:");
+    tree.levelOrder((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    console.log("Elements in preorder:");
+    tree.preorderRec((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    console.log("Elements in postorder:");
+    tree.postorderRec((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+
+    console.log("Elements in inorder:");
+    tree.inorderRec((node) => {
+        console.log(node.data);
+    });
+    console.log("");
+}
+
+bstDriver();

@@ -150,7 +150,7 @@ export class Tree {
         }
     }
 
-    preorderRec(callback, node) {
+    preorderRec(callback, node = this.root) {
         if (!callback) throw new Error("Callback function required");
         if (!node) return;
 
@@ -160,7 +160,7 @@ export class Tree {
         this.preorderRec(callback, node.right);
     }
 
-    inorderRec(callback, node) {
+    inorderRec(callback, node = this.root) {
         if (!callback) throw new Error("Callback function required");
         if (!node) return;
 
@@ -169,7 +169,7 @@ export class Tree {
         this.inorderRec(callback, node.right);
     }
 
-    postorderRec(callback, node) {
+    postorderRec(callback, node = this.root) {
         if (!callback) throw new Error("Callback function required");
         if (!node) return;
 
