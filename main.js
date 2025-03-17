@@ -55,3 +55,17 @@ console.log("------");
 test2.inorderRec(logNode, test2.root);
 console.log("------");
 test2.postorderRec(logNode, test2.root);
+console.log("------");
+const heightNode = test2.find(4);
+console.log(test2.height(heightNode));
+console.log("------");
+console.log(test2.depth(test2.root));
+console.log("------");
+console.log("is test2 balanced? " + test2.isBalanced());
+
+test2.insert(20);
+test2.insert(19);
+test2.insert(18);
+test2.insert(17);
+prettyPrint(test2.root);
+console.log("is test2 balanced? " + test2.isBalanced());

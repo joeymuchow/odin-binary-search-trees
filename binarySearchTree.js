@@ -177,4 +177,63 @@ export class Tree {
         this.postorderRec(callback, node.right);
         callback(node);
     }
+
+    height(node) {
+        if (!node) return 0;
+
+        let left = 0;
+        if (node.left) {
+            left = this.height(node.left);
+        }
+
+        let right = 0;
+        if (node.left) {
+            right = this.height(node.right);
+        }
+
+        return Math.max(left, right) + 1;
+    }
+
+    depth(node) {
+        let depth = 0;
+        let currentNode = this.root;
+
+        while (currentNode !== null) {
+            if (node.data === currentNode.data) {
+                break;
+            } else if (node.data < currentNode.data) {
+                currentNode = currentNode.left;
+                depth += 1;
+            } else {
+                currentNode = currentNode.right;
+                depth += 1;
+            }
+        }
+
+        return depth;
+    }
+
+    isBalanced(currentNode = this.root) {
+        const left = this.height(currentNode.left);
+        const right = this.height(currentNode.right);
+
+        const diff = left - right;
+
+        if (diff > 1 || diff < -1) {
+            return false;
+        }
+
+        let leftResult = true;
+        let rightResult = true;
+
+        if (currentNode.left) {
+            leftResult = this.isBalanced(currentNode.left);
+        }
+
+        if (currentNode.right) {
+            rightResult = this.isBalanced(currentNode.right);
+        }
+
+        return leftResult && rightResult;
+    }
 }
