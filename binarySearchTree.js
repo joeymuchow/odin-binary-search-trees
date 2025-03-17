@@ -236,4 +236,25 @@ export class Tree {
 
         return leftResult && rightResult;
     }
+
+    rebalance() {
+        // check if tree is balanced
+        // if balanced return this.root
+        if (this.isBalanced()) {
+            return;
+        }
+
+        // create array to store data
+        const array = [];
+        // use traversal function to grab all node data
+        // levelorder, preorder, etc
+        // callback given should be a function to push data into array
+        this.levelOrder((node) => {
+            array.push(node.data);
+        });
+
+        // call build tree with array of data
+        // get root node from this method
+        this.root = this.buildTree(array);
+    }
 }
